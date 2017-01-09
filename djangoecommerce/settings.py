@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'djangoecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_ecommerce',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
