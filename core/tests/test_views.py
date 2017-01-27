@@ -31,6 +31,7 @@ class ProductListTestCase(TestCase):
     def setUp(self):
         '''' Executado quando inicia cada teste '''
         self.url = reverse('catalog:product_list')
+        # cria 10 produtos automaticamente para o teste
         self.products = mommy.make('catalog.Product', _quantity=10)
 
     def tearDown(self):
@@ -43,9 +44,15 @@ class ProductListTestCase(TestCase):
 
     def test_context(self):
         response = self.client.get(self.url)
-        self.assertTrue('product_list' in response.context)
-        product_list = response.context['product_list']
-        self.assertEquals(product_list.count(), 10)
+        self.assertTrue('products' in response.context)
+        product_list = response.context['products']
+        self.assertEquals(product_list.count(), 3)
+        paginator = response.context['paginator']
+        self.assertEquals(paginator.num_pages, 4)
+
+    def test_page_not_found(self):
+        response = self.client.get('{}?page=5'.format(self.url))
+        self.assertEquals(response.status_code, 404)
 
 
 class ContactViewTestCase(TestCase):

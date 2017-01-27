@@ -6,4 +6,4 @@ psycopg2==2.6.2
 model_mommy
 whitenoise
 django-widget-tweaks
-jupyter
+# jupyter
