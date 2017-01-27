@@ -35,12 +35,19 @@
 
               </ul>
             </li>
-			<li>
-				<a href="{% url 'contact' %}">Contato</a>
-			</li>
-          </ul>
+						<li>
+							<a href="{% url 'contact' %}">Contato</a>
+						</li>
+			    </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Minha Conta</a></li>
+						{% if user.is_authenticated %}
+						    <li style="margin-top: 20px; width: 126px; color: white;"><span>Olá, {{ user }}</span></li>
+						{% endif %}
+						{% if user.is_authenticated %}
+						    <li><a href="{% url 'logout' %}">Sair</a></li>
+						{% else %}
+								<li><a href="{% url 'login' %}">Entrar</a></li>
+						{% endif %}
           </ul>
         </div>
       </div>
