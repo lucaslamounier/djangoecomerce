@@ -7,7 +7,7 @@ from .forms import ContactForm
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import View, TemplateView, CreateView
+from django.views.generic import View, TemplateView
 
 User = get_user_model()
 
@@ -27,13 +27,3 @@ def contact(request):
 		'success': success,
 	}
 	return render(request, 'contact.html', context)
-
-
-class RegisterView(CreateView):
-
-	form_class = UserCreationForm
-	template_name = 'register.html'
-	model = User
-	success_url = reverse_lazy('index')
-
-register = RegisterView.as_view()
