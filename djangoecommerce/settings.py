@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     # libs
     'widget_tweaks',
     # apps
+    'accounts',
     'core',
     'catalog',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -116,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America/Recife'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -148,6 +150,7 @@ DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
+AUTH_USER_MODEL = 'accounts.User'
 
 try:
     from .local_settings import *
